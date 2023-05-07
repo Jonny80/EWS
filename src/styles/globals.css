@@ -1,3 +1,6 @@
+body {
+  margin: 0 ;
+}
 :root {
   --font-mono: Lato,Roboto Mono,  Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
