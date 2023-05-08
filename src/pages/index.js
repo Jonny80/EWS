@@ -1,8 +1,4 @@
 import { useRouter } from 'next/router';
-import Header from "@/assets/Header";
-
-import File from "@/assets/File";
-import AddModal from "@/assets/AddModal";
 import {Button} from "@mui/material";
 import {colors} from "@/config/colors";
 import {useEffect, useState} from "react";

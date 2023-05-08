@@ -1,15 +1,10 @@
 import Header from "@/assets/Header";
 import Folder from "@/assets/Folder";
-import {Fab, Modal} from "@mui/material";
+import {Fab} from "@mui/material";
 import {colors} from "@/config/colors";
 import PlusIcon from '@/assets/svgs/Plus.svg'
 import Image from "next/image";
-import Apple from '@/assets/svgs/Apple.svg'
-import Drive from '@/assets/svgs/GoogleDrive.svg'
-import Cloud from '@/assets/svgs/Cloud.svg'
-import SettingModal from "@/assets/SettingModal";
 import {useState} from "react";
-import Account from "@/assets/Account";
 import {useRouter} from "next/router";
 import AddModal from "@/assets/AddModal";
 

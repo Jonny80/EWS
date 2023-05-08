@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
           <link rel="manifest" href="/manifest.webmanifest"  />
-          <link rel="icon" href="/Logo.png" />
+          <link rel="icon" href="/logo.svg" />
           <meta name="theme-color" content="#012038" />
           <meta name="background-color" content="#012038" />
       </Head>
