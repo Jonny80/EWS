@@ -1,9 +1,20 @@
+
+@font-face {
+  font-family: "Lato";
+  src: local("Lato"), url('../assets/fonts/Lato-Regular.ttf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Lato";
+  src: local("Lato"), url('../assets/fonts/Lato-Bold.ttf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Lato";
+  src: local("Lato"), url('../assets/fonts/Lato-Italic.ttf');
+  font-weight: auto;
+}
 body {
+  font-family: 'Lato' !important;
   margin: 0 ;
 }
-:root {
-  --font-mono: Lato,Roboto Mono,  Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-}
-

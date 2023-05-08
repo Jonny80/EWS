@@ -1,4 +1,3 @@
-import styles from '@/styles/Home.module.css'
 import {Button} from "@mui/material";
 import {colors} from "@/config/colors";
 export default function Home() {

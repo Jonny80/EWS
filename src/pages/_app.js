@@ -1,11 +1,13 @@
 import '@/styles/globals.css'
 import {createTheme, ThemeProvider} from "@mui/material";
+import Head from 'next/head'
 import {colors} from "@/config/colors";
+
 const theme = createTheme({
   palette: {
     typography: {
       fontFamily: [
-        'Roboto',
+        'Lato',
         '"Helvetica Neue"',
         'Arial',
         'sans-serif',
@@ -26,7 +28,12 @@ const theme = createTheme({
 export default function App({ Component, pageProps }) {
   return (
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <>
+          <Head>
+            <title>Multi Cloud</title>
+          </Head>
+          <Component {...pageProps} />
+        </>
       </ThemeProvider>
   );
 }
