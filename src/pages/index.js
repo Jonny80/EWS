@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import {Button} from "@mui/material";
 import {colors} from "@/config/colors";
 import {useEffect, useState} from "react";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 export default function Home() {
     const [supportsPWA, setSupportsPWA] = useState(false);
@@ -47,9 +48,14 @@ export default function Home() {
                   Wollen Sie diese App als PWA installieren?
               </div>
               <div style={styles.buttons}>
-                  <Button variant={'outlined'} style={styles.button} onClick={onInstall} disabled={!supportsPWA}>
-                      Ja
-                  </Button>
+                  {supportsPWA ?
+                      <Button variant={'outlined'} style={styles.button} onClick={onInstall} disabled={!supportsPWA}>
+                          Ja
+                      </Button> :
+                      <LoadingButton variant={'outlined'}  loading
+                                     style={{borderRadius: '0.3rem', backgroundColor: colors.white}}/>
+                  }
+
                   <Button variant={'outlined'} style={styles.button} onClick={()=>router.push('/main')}>
                       Nein
                   </Button>

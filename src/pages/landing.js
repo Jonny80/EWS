@@ -1,5 +1,6 @@
 import {colors} from "@/config/colors";
 import {Button} from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 export default function landing(){
 
@@ -12,6 +13,7 @@ export default function landing(){
                 </div>
                 <div style={styles.buttons}>
                     <Button variant={'outlined'} style={{borderRadius:'0.3rem',backgroundColor:colors.white}}>Ja</Button>
+                    <LoadingButton variant={'outlined'} style={{borderRadius:'0.3rem',backgroundColor:colors.white}}>Ja</LoadingButton>
                     <Button variant={'outlined'} style={{borderRadius:'0.3rem',backgroundColor:colors.white}}>Nein</Button>
                 </div>
 
