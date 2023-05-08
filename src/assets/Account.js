@@ -1,11 +1,11 @@
 import {colors} from "@/config/colors";
 import Image from "next/image";
-import folderStyles from '@/styles/Folder.module.css'
-import OneDrive from "@/assets/svgs/Cloud.svg";
-import Apple from "@/assets/svgs/Apple.svg";
-import Drive from "@/assets/svgs/GoogleDrive.svg";
-export default function Folder({icon,header,subHeader,onClick}){
-
+import folderStyles from '@/styles/Account.module.css'
+import {Button} from "@mui/material";
+import OneDrive from '@/assets/svgs/Cloud.svg'
+import Apple from '@/assets/svgs/Apple.svg'
+import Drive from '@/assets/svgs/GoogleDrive.svg'
+export default function Account({icon,header,subHeader}){
 
     function getIcon(){
         switch (icon){
@@ -19,8 +19,10 @@ export default function Folder({icon,header,subHeader,onClick}){
                 return OneDrive
         }
     }
+
+
     return(
-        <div style={styles.container} onClick={onClick} className={folderStyles.container}>
+        <div style={styles.container} onClick={()=>{}} className={folderStyles.container}>
             <div style={styles.iconContainer}>
                 <Image src={getIcon()} alt={'Image'} style={styles.icon}/>
             </div>
@@ -28,7 +30,7 @@ export default function Folder({icon,header,subHeader,onClick}){
                 <div style={styles.header}>{header}</div>
                 <div style={styles.subHeader}>{subHeader}</div>
             </div>
-
+            <Button variant={'contained'} style={styles.button} onClick={()=> {}}>Delete</Button>
         </div>
 
     )
@@ -70,5 +72,11 @@ const styles = {
     },
     subHeader:{
         color:colors.grey,
-    }
+    },
+    button:{
+        borderRadius:'0.3rem',
+        backgroundColor:colors.red,
+        position:'absolute',
+        right:'3vw'
+    },
 }

@@ -1,14 +1,103 @@
+import { useRouter } from 'next/router';
+import Header from "@/assets/Header";
+
+import File from "@/assets/File";
+import AddModal from "@/assets/AddModal";
 import {Button} from "@mui/material";
 import {colors} from "@/config/colors";
-import { useRouter } from 'next/router';
+import {useEffect, useState} from "react";
 
 export default function Home() {
+    const [supportsPWA, setSupportsPWA] = useState(false);
 
-    const router = useRouter()
+    const [promptInstall, setPromptInstall] = useState(null);
+
+
+    const router = useRouter();
+    useEffect(() => {
+        if (window.matchMedia("(display-mode: standalone)").matches && !(process.env.NEXT_PUBLIC_DEBUG==="True")){
+            router.push("/main");
+        }
+        const handler = (e) => {
+            e.preventDefault();
+            setSupportsPWA(true);
+            setPromptInstall(e);
+
+        };
+        window.addEventListener("beforeinstallprompt", handler);
+
+        return () => window.removeEventListener("transitionend", handler);
+    }, []);
+
+    const onInstall = (evt) => {
+        evt.preventDefault();
+        if (!promptInstall) {
+            return;
+        }
+        promptInstall.prompt();
+        promptInstall.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === "accepted") {
+                router.push("/main")
+            } else {
+                console.log("PWA setup rejected");
+            }
+        });
+    };
 
   return (
-    <div style={{display:'flex',height:'100vh',width:'100vw',justifyContent:'center',alignItems:'center',backgroundColor:colors.main}}>
-        <Button onClick={()=>router.push('/main')} variant={'outlined'} style={{borderRadius:'0.3rem',backgroundColor:colors.white}}>Install</Button>
-    </div>
+      <div style={styles.container}>
+          <div style={styles.card}>
+              <div style={styles.header}>
+                  Wollen Sie diese App als PWA installieren?
+              </div>
+              <div style={styles.buttons}>
+                  <Button variant={'outlined'} style={styles.button} onClick={onInstall} disabled={!supportsPWA}>
+                      Ja
+                  </Button>
+                  <Button variant={'outlined'} style={styles.button} onClick={()=>router.push('/main')}>
+                      Nein
+                  </Button>
+              </div>
+
+          </div>
+      </div>
   )
+}
+
+
+
+const styles = {
+    container:{
+        display:'flex',
+        height:'100vh',
+        width:'100vw',
+        justifyContent:'center',
+        alignItems:'center',
+        backgroundColor:colors.main
+    },
+    card:{
+        display:'flex',
+        flexDirection: 'column',
+        alignItems:'center',
+        justifyContent:'space-around',
+        width:"35%",
+        height:'50%',
+    },
+    header:{
+        textAlign:'center',
+        color:'white',
+        fontFamily:'sans-serif',
+        fontSize:'2rem'
+    },
+    buttons:{
+        alignSelf:'center',
+        display:'flex',
+        flexDirection:'row',
+        width:'50%',
+        justifyContent: 'space-between'
+    },
+    button:{
+        borderRadius:'0.3rem',
+        backgroundColor:colors.white
+    }
 }

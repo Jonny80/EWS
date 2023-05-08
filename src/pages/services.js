@@ -1,45 +1,37 @@
 import Header from "@/assets/Header";
-import Folder from "@/assets/Folder";
-import {Fab, Modal} from "@mui/material";
-import {colors} from "@/config/colors";
-import PlusIcon from '@/assets/svgs/Plus.svg'
-import Image from "next/image";
-import Apple from '@/assets/svgs/Apple.svg'
-import Drive from '@/assets/svgs/GoogleDrive.svg'
-import Cloud from '@/assets/svgs/Cloud.svg'
+import Account from "@/assets/Account";
 import SettingModal from "@/assets/SettingModal";
 import {useState} from "react";
-import Account from "@/assets/Account";
-import {useRouter} from "next/router";
-import AddModal from "@/assets/AddModal";
+import Image from "next/image";
+import PlusIcon from "@/assets/svgs/Plus.svg";
+import {Fab} from "@mui/material";
+import {colors} from "@/config/colors";
 
-export default function main(){
 
-    const router = useRouter()
+export default function services(){
+
     const [open,setOpen] = useState(false);
     const handleCloseModal = () => setOpen(false);
     const handleOpenModal = () => setOpen(true);
-    const handleCLick = () =>{
-        router.push('/files')
-    }
 
-    return(
+
+    return (
         <div style={styles.container}>
-            <Header withSettings={true}/>
-            <AddModal open={open} onClose={handleCloseModal}/>
+            <Header withSettings={false}/>
+            <SettingModal open={open} onClose={handleCloseModal}/>
             <div style={styles.list}>
-                <Folder header={"Bilder"} subHeader={'synchronized: 15:32 '} icon={'apple'} onClick={handleCLick}/>
-                <Folder header={"Dokumente"} subHeader={'synchronized: 15:32 '} icon={'google'} onClick={handleCLick}/>
-                <Folder header={"Uni"} subHeader={'synchronized: 15:32 '} icon={'microsoft'} onClick={handleCLick}/>
+                <Account header={'John Smith'} subHeader={'sync: 14:22'} icon={'apple'}/>
+                <Account header={'John Smith'} subHeader={'sync: 14:22'} icon={'microsoft'}/>
+                <Account header={'John Smith'} subHeader={'sync: 14:22'} icon={'google'}/>
             </div>
             <Fab color="primary" aria-label="add" style={styles.Fab} onClick={handleOpenModal}>
                 <Image src={PlusIcon} alt={"Plus"} style={styles.addIcon}/>
             </Fab>
         </div>
     )
-
-
 }
+
+
 
 const styles = {
     container:{
@@ -67,6 +59,4 @@ const styles = {
         height:'100%',
         color:colors.main
     }
-
-
 }

@@ -1,7 +1,7 @@
 import {colors} from "@/config/colors";
 import {Button} from "@mui/material";
 
-export default function Landing(){
+export default function landing(){
 
     return (
         <div style={styles.container}>
@@ -10,7 +10,6 @@ export default function Landing(){
                     Wollen Sie diese App als PWA installieren?
 
                 </div>
-
                 <div style={styles.buttons}>
                     <Button variant={'outlined'} style={{borderRadius:'0.3rem',backgroundColor:colors.white}}>Ja</Button>
                     <Button variant={'outlined'} style={{borderRadius:'0.3rem',backgroundColor:colors.white}}>Nein</Button>
