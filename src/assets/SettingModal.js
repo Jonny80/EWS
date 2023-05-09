@@ -2,14 +2,24 @@ import {Box, Button, FormControl, InputLabel, MenuItem, Modal, Select, TextField
 import {colors} from "@/config/colors";
 import {useState} from "react";
 
-export default function SettingModal({open,onClose}){
+export default function SettingModal({open,onClose,addService}){
 
     const [service, setService] = useState('');
+    const [username,setUsername] = useState('')
 
     const handleChange = (event) => {
         setService(event.target.value);
     };
+     const handleChangeUsername = (e) =>{
+         setUsername(e.target.value)
+     }
 
+     const handleSave = () =>{
+         if (username.length > 0 && service.length > 0){
+             addService(username,service);
+         }
+         onClose();
+     }
 
     return(
         <Modal open={open} onClose={onClose} style={styles.modal}>
@@ -27,9 +37,9 @@ export default function SettingModal({open,onClose}){
                                     label="Service"
                                     onChange={handleChange}
                                 >
-                                    <MenuItem value={1}>Drive</MenuItem>
-                                    <MenuItem value={2}>Apple Cloud</MenuItem>
-                                    <MenuItem value={3}>OneDrive</MenuItem>
+                                    <MenuItem value={'google'}>Drive</MenuItem>
+                                    <MenuItem value={'apple'}>Apple Cloud</MenuItem>
+                                    <MenuItem value={'microsoft'}>OneDrive</MenuItem>
                                 </Select>
                             </FormControl>
                         </Box>
@@ -37,16 +47,16 @@ export default function SettingModal({open,onClose}){
                 </div>
                 <div>
                     <div style={styles.header}>Username</div>
-                    <TextField id="standard-basic" label="" variant="standard" />
+                    <TextField id="standard-basic" label="" variant="standard" value={username} onChange={handleChangeUsername}/>
                 </div>
                 <div>
                     <div style={styles.header}>Password</div>
                     <TextField id="standard-basic" label="" type="password" variant="standard" />
                 </div>
-                <Button variant={'contained'} style={styles.addButton} onClick={onClose}>Add Account</Button>
+                <Button variant={'contained'} style={styles.addButton} onClick={handleSave}>Add Account</Button>
                 <div style={styles.buttonContainer}>
                     <Button variant={'contained'} style={styles.button} onClick={onClose}>Back</Button>
-                    <Button variant={'contained'} style={styles.button} onClick={onClose}>Save</Button>
+                    <Button variant={'contained'} style={styles.button} onClick={handleSave}>Save</Button>
                 </div>
             </div>
         </Modal>

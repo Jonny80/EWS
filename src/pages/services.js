@@ -6,23 +6,60 @@ import Image from "next/image";
 import PlusIcon from "@/assets/svgs/Plus.svg";
 import {Fab} from "@mui/material";
 import {colors} from "@/config/colors";
+import {serviceData} from "@/config/dummyData";
 
+/**
+ *
+ * @type {{
+ *     name:string,
+ *     icon:('google'|'microsoft'|'apple')
+ * }[]}
+ */
 
 export default function services(){
-
+    /**
+     *
+     * @type {{
+     *     name:string,
+     *     icon:('google'|'microsoft'|'apple')
+     * }[]}
+     */
+    const [data,setData] = useState(serviceData)
     const [open,setOpen] = useState(false);
     const handleCloseModal = () => setOpen(false);
     const handleOpenModal = () => setOpen(true);
+
+    const addService = (name,icon) =>{
+        setData((services)=>{
+            return [...services,{
+                name:name,
+                icon:icon
+            }]
+        })
+    }
+
+    function getData(index) {
+        let buffer = [...data];
+        buffer.splice(index,1);
+        return buffer
+    }
 
 
     return (
         <div style={styles.container}>
             <Header withSettings={false}/>
-            <SettingModal open={open} onClose={handleCloseModal}/>
+            <SettingModal open={open} onClose={handleCloseModal} addService={addService}/>
             <div style={styles.list}>
-                <Account header={'John Smith'} subHeader={'sync: 14:22'} icon={'apple'}/>
-                <Account header={'John Smith'} subHeader={'sync: 14:22'} icon={'microsoft'}/>
-                <Account header={'John Smith'} subHeader={'sync: 14:22'} icon={'google'}/>
+                {
+                    data.map((s,index)=>{
+                        return (
+                            <Account key={s.name} header={s.name}
+                                     subHeader={'sync: 14:22'} icon={s.icon} index={index}
+                                     onDelete={()=>setData(getData(index))}
+                            />
+                        )
+                    })
+                }
             </div>
             <Fab color="primary" aria-label="add" style={styles.Fab} onClick={handleOpenModal}>
                 <Image src={PlusIcon} alt={"Plus"} style={styles.addIcon}/>
