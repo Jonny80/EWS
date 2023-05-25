@@ -15,7 +15,7 @@ export default function Files(){
             <Header withSettings={false}/>
             <Grid container spacing={2} style={styles.container}>
                 {testfile.map((item,index) => (
-                    <Grid item xs={0} sm={3} style={{ paddingBottom: 12 }} key={index}>
+                    <Grid item xs={0} sm={3} style={styles.childStyle} key={index}>
                         <File  size={'5 MB'} file={true} name={'File001'}/>
                     </Grid>
                 ))}
@@ -37,5 +37,11 @@ const styles = {
         position:'absolute',
         left:'50%',
         bottom:'5%'
+    },
+    childStyle:{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        paddingBottom: 12
     }
 }
