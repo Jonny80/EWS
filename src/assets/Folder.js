@@ -4,6 +4,8 @@ import folderStyles from '@/styles/Folder.module.css'
 import OneDrive from "@/assets/svgs/Cloud.svg";
 import Apple from "@/assets/svgs/Apple.svg";
 import Drive from "@/assets/svgs/GoogleDrive.svg";
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import {Button} from "@mui/material";
 export default function Folder({icon,header,subHeader,onClick}){
 
 
@@ -26,8 +28,12 @@ export default function Folder({icon,header,subHeader,onClick}){
             </div>
             <div style={styles.description}>
                 <div style={styles.header}>{header}</div>
-                <div style={styles.subHeader}>{subHeader}</div>
+                <div style={styles.subHeaderContainer}>
+                    <div style={styles.subHeader}>{subHeader}</div>
+                    <TaskAltIcon color={'success'} style={{marginLeft:'.5vw'}} fontSize={'small'}/>
+                </div>
             </div>
+            <Button variant={'contained'} style={styles.button} onClick={()=> {}}>Delete</Button>
 
         </div>
 
@@ -70,5 +76,15 @@ const styles = {
     },
     subHeader:{
         color:colors.grey,
-    }
+    },
+    subHeaderContainer:{
+        display:'flex',
+        flexDirection:'row',
+    },
+    button:{
+        borderRadius:'0.3rem',
+        backgroundColor:colors.red,
+        position:'absolute',
+        right:'3vw'
+    },
 }

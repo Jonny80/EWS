@@ -5,6 +5,7 @@ import {Button} from "@mui/material";
 import OneDrive from '@/assets/svgs/Cloud.svg'
 import Apple from '@/assets/svgs/Apple.svg'
 import Drive from '@/assets/svgs/GoogleDrive.svg'
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
 export default function Account({icon,header,subHeader,index,onDelete}){
 
     function getIcon(){
@@ -28,7 +29,10 @@ export default function Account({icon,header,subHeader,index,onDelete}){
             </div>
             <div style={styles.description}>
                 <div style={styles.header}>{header}</div>
-                <div style={styles.subHeader}>{subHeader}</div>
+                <div style={styles.subHeaderContainer}>
+                    <div style={styles.subHeader}>{subHeader}</div>
+                    <TaskAltIcon color={'success'} style={{marginLeft:'.5vw'}} fontSize={'small'}/>
+                </div>
             </div>
             <Button variant={'contained'} style={styles.button} onClick={()=> onDelete(index)}>Delete</Button>
         </div>
@@ -79,4 +83,8 @@ const styles = {
         position:'absolute',
         right:'3vw'
     },
+    subHeaderContainer:{
+        display:'flex',
+        flexDirection:'row',
+    }
 }

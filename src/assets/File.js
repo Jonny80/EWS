@@ -2,8 +2,9 @@ import FolderIcon from '@/assets/svgs/Folder.svg'
 import FileIcon from '@/assets/svgs/File.svg'
 import {colors} from "@/config/colors";
 import Image from "next/image";
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
 
-export default function File({file,name,subHeader,size}){
+export default function File({file,name,subHeader,size,synced}){
 
     function getIcon(){
         if (file===true) return FileIcon
@@ -18,6 +19,10 @@ export default function File({file,name,subHeader,size}){
             <div style={styles.name}>{name}</div>
             <div style={styles.subHeader}>{subHeader}</div>
             <div style={styles.subHeader}>{size}</div>
+            <div style={styles.syncedHeader}>
+                <div style={styles.subHeader}>{synced}</div>
+                <TaskAltIcon color={'success'} style={{marginLeft:'.5vw'}} fontSize={'small'}/>
+            </div>
         </div>
 
 
@@ -54,5 +59,10 @@ const styles = {
         color:colors.grey,
         fontSize:'.9vw',
 
-    }
+    },
+    syncedHeader:{
+        display:'flex',
+        flexDirection:'row',
+    },
+
 }

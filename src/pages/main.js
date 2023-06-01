@@ -1,6 +1,6 @@
 import Header from "@/assets/Header";
 import Folder from "@/assets/Folder";
-import {Fab} from "@mui/material";
+import {Breadcrumbs, Fab, Typography} from "@mui/material";
 import {colors} from "@/config/colors";
 import PlusIcon from '@/assets/svgs/Plus.svg'
 import Image from "next/image";
@@ -8,6 +8,8 @@ import {useState} from "react";
 import {useRouter} from "next/router";
 import AddModal from "@/assets/AddModal";
 import {folderData} from "@/config/dummyData";
+import Link from "next/link";
+import HomeIcon from "@mui/icons-material/Home";
 
 export default function main(){
 
@@ -32,6 +34,22 @@ export default function main(){
     return(
         <div style={styles.container}>
             <Header withSettings={true}/>
+                <Breadcrumbs aria-label="breadcrumb" style={{marginLeft:'1vw',marginTop:'1vw'}}>
+                    <Typography
+                        sx={{ display: 'flex', alignItems: 'center' }}
+                        color="text.neutral"
+                        variant={'h5'}
+                    >
+                    <Link
+                        underline="hover"
+                        sx={{ display: 'flex', alignItems: 'center' }}
+                        color="inherit"
+                        href="/"
+                    >
+                        Home
+                    </Link>
+                    </Typography>
+                </Breadcrumbs>
             <AddModal open={open} onClose={handleCloseModal} onSave={addFolder}/>
             <div style={styles.list}>
                 {
@@ -62,10 +80,10 @@ const styles = {
     },
     Fab:{
         boxShadow:'none',
-        height: '5vw',
-        width: '5vw',
+        height: '4vw',
+        width: '4vw',
         position:'absolute',
-        left:'50%',
+        left:'90%',
         bottom:'5%',
         backgroundColor:'transparent'
     },

@@ -22,6 +22,9 @@ const theme = createTheme({
     secondary: {
       main: colors.second,
     },
+    neutral:{
+      main:colors.grey
+    }
   },
 });
 

@@ -4,9 +4,10 @@ import SettingModal from "@/assets/SettingModal";
 import {useState} from "react";
 import Image from "next/image";
 import PlusIcon from "@/assets/svgs/Plus.svg";
-import {Fab} from "@mui/material";
+import {Breadcrumbs, Fab, Typography} from "@mui/material";
 import {colors} from "@/config/colors";
 import {serviceData} from "@/config/dummyData";
+import Link from "next/link";
 
 /**
  *
@@ -48,6 +49,29 @@ export default function services(){
     return (
         <div style={styles.container}>
             <Header withSettings={false}/>
+            <Breadcrumbs aria-label="breadcrumb" style={{marginLeft:'1vw',marginTop:'1vw'}}>
+                <Typography
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="text.neutral"
+                    variant={'h5'}
+                >
+                    <Link
+                        underline="hover"
+                        sx={{ display: 'flex', alignItems: 'center' }}
+                        color="inherit"
+                        href="/main"
+                    >
+                        Home
+                    </Link>
+                </Typography>
+                <Typography
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    variant={'h5'}
+                    color="text.neutral"
+                >
+                    Settings
+                </Typography>
+            </Breadcrumbs>
             <SettingModal open={open} onClose={handleCloseModal} addService={addService}/>
             <div style={styles.list}>
                 {
@@ -84,10 +108,10 @@ const styles = {
     },
     Fab:{
         boxShadow:'none',
-        height: '5vw',
-        width: '5vw',
+        height: '3vw',
+        width: '3vw',
         position:'absolute',
-        left:'50%',
+        left:'90%',
         bottom:'5%',
         backgroundColor:'transparent'
     },
