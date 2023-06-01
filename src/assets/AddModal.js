@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import {colors} from "@/config/colors";
 import {useState} from "react";
+import Header from "@/assets/Header";
 
 export default function AddModal({open,onClose,onSave}){
 
@@ -38,6 +39,7 @@ export default function AddModal({open,onClose,onSave}){
     return(
         <Modal open={open} onClose={onClose} style={styles.modal}>
             <div style={styles.container}>
+                <div style={styles.mainHeader}> Service Settings</div>
                 <div>
                     <div style={styles.header}>Add Service</div>
                     <div>
@@ -104,6 +106,11 @@ const styles = {
         display:'flex',
         alignItems:'center',
         justifyContent:'center'
+    },
+    mainHeader:{
+      fontSize: '2rem',
+        fontWeight: 'bold'
+
     },
     container:{
         padding:'2vw',
