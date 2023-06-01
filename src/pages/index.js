@@ -19,7 +19,6 @@ export default function Home() {
             e.preventDefault();
             setSupportsPWA(true);
             setPromptInstall(e);
-
         };
         window.addEventListener("beforeinstallprompt", handler);
 
@@ -55,7 +54,6 @@ export default function Home() {
                       <LoadingButton variant={'outlined'}  loading
                                      style={{borderRadius: '0.3rem', backgroundColor: colors.white}}/>
                   }
-
                   <Button variant={'outlined'} style={styles.button} onClick={()=>router.push('/main')}>
                       Nein
                   </Button>

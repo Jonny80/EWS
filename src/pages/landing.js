@@ -9,7 +9,6 @@ export default function landing(){
             <div style={styles.card}>
                 <div style={styles.header}>
                     Wollen Sie diese App als PWA installieren?
-
                 </div>
                 <div style={styles.buttons}>
                     <Button variant={'outlined'} style={{borderRadius:'0.3rem',backgroundColor:colors.white}}>Ja</Button>

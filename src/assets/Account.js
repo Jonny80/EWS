@@ -5,7 +5,7 @@ import {Button} from "@mui/material";
 import OneDrive from '@/assets/svgs/Cloud.svg'
 import Apple from '@/assets/svgs/Apple.svg'
 import Drive from '@/assets/svgs/GoogleDrive.svg'
-export default function Account({icon,header,subHeader}){
+export default function Account({icon,header,subHeader,index,onDelete}){
 
     function getIcon(){
         switch (icon){
@@ -30,7 +30,7 @@ export default function Account({icon,header,subHeader}){
                 <div style={styles.header}>{header}</div>
                 <div style={styles.subHeader}>{subHeader}</div>
             </div>
-            <Button variant={'contained'} style={styles.button} onClick={()=> {}}>Delete</Button>
+            <Button variant={'contained'} style={styles.button} onClick={()=> onDelete(index)}>Delete</Button>
         </div>
 
     )

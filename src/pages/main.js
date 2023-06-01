@@ -7,10 +7,12 @@ import Image from "next/image";
 import {useState} from "react";
 import {useRouter} from "next/router";
 import AddModal from "@/assets/AddModal";
+import {folderData} from "@/config/dummyData";
 
 export default function main(){
 
     const router = useRouter()
+    const [folder,setFolder] = useState(folderData)
     const [open,setOpen] = useState(false);
     const handleCloseModal = () => setOpen(false);
     const handleOpenModal = () => setOpen(true);
@@ -18,14 +20,24 @@ export default function main(){
         router.push('/files')
     }
 
+    const addFolder = (name,icon) =>{
+        setFolder((folder)=>{
+            return [...folder,{
+                name:name,
+                icon:icon
+            }]
+        })
+    }
+
     return(
         <div style={styles.container}>
             <Header withSettings={true}/>
-            <AddModal open={open} onClose={handleCloseModal}/>
+            <AddModal open={open} onClose={handleCloseModal} onSave={addFolder}/>
             <div style={styles.list}>
-                <Folder header={"Bilder"} subHeader={'synchronized: 15:32 '} icon={'apple'} onClick={handleCLick}/>
-                <Folder header={"Dokumente"} subHeader={'synchronized: 15:32 '} icon={'google'} onClick={handleCLick}/>
-                <Folder header={"Uni"} subHeader={'synchronized: 15:32 '} icon={'microsoft'} onClick={handleCLick}/>
+                {
+                    folder.map((folder,index)=>
+                        <Folder key={index} header={folder.name} subHeader={'synchronized: 15:32 '} icon={folder.icon} onClick={handleCLick}/>)
+                }
             </div>
             <Fab color="primary" aria-label="add" style={styles.Fab} onClick={handleOpenModal}>
                 <Image src={PlusIcon} alt={"Plus"} style={styles.addIcon}/>

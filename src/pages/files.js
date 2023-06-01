@@ -3,9 +3,9 @@ import File from "@/assets/File";
 import {Button, Grid} from "@mui/material";
 import {colors} from "@/config/colors";
 import {useRouter} from "next/router";
+import {fileData} from "@/config/dummyData";
 
 
-const testfile = [1,2,3,4,5,6,7,8,9,0,10];
 export default function Files(){
 
     const router = useRouter()
@@ -14,9 +14,9 @@ export default function Files(){
         <div>
             <Header withSettings={false}/>
             <Grid container spacing={2} style={styles.container}>
-                {testfile.map((item,index) => (
-                    <Grid item xs={0} sm={3} style={{ paddingBottom: 12 }} key={index}>
-                        <File  size={'5 MB'} file={true} name={'File001'}/>
+                {fileData.map((item,index) => (
+                    <Grid item xs={0} sm={3} style={styles.childStyle} key={index}>
+                        <File  size={item.size} file={item.file} name={item.name}/>
                     </Grid>
                 ))}
             </Grid>
@@ -37,5 +37,11 @@ const styles = {
         position:'absolute',
         left:'50%',
         bottom:'5%'
+    },
+    childStyle:{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        paddingBottom: 12
     }
 }
