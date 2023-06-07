@@ -7,7 +7,14 @@ import PlusIcon from "@/assets/svgs/Plus.svg";
 import {Breadcrumbs, Fab, Typography} from "@mui/material";
 import {colors} from "@/config/colors";
 import {serviceData} from "@/config/dummyData";
-import Link from "next/link";
+import SettingsIcon from '@mui/icons-material/Settings';
+import SubHeader from "@/assets/SubHeader";
+
+const path = [{
+    href:null,
+    label:'Settings',
+    icon: <SettingsIcon fontSize={'small'} />
+}]
 
 /**
  *
@@ -49,29 +56,7 @@ export default function services(){
     return (
         <div style={styles.container}>
             <Header withSettings={false}/>
-            <Breadcrumbs aria-label="breadcrumb" style={{marginLeft:'1vw',marginTop:'1vw'}}>
-                <Typography
-                    sx={{ display: 'flex', alignItems: 'center' }}
-                    color="text.neutral"
-                    variant={'h5'}
-                >
-                    <Link
-                        underline="hover"
-                        sx={{ display: 'flex', alignItems: 'center' }}
-                        color="inherit"
-                        href="/main"
-                    >
-                        Home
-                    </Link>
-                </Typography>
-                <Typography
-                    sx={{ display: 'flex', alignItems: 'center' }}
-                    variant={'h5'}
-                    color="text.neutral"
-                >
-                    Settings
-                </Typography>
-            </Breadcrumbs>
+            <SubHeader path={path}/>
             <SettingModal open={open} onClose={handleCloseModal} addService={addService}/>
             <div style={styles.list}>
                 {

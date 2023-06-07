@@ -34,22 +34,6 @@ export default function main(){
     return(
         <div style={styles.container}>
             <Header withSettings={true}/>
-                <Breadcrumbs aria-label="breadcrumb" style={{marginLeft:'1vw',marginTop:'1vw'}}>
-                    <Typography
-                        sx={{ display: 'flex', alignItems: 'center' }}
-                        color="text.neutral"
-                        variant={'h5'}
-                    >
-                    <Link
-                        underline="hover"
-                        sx={{ display: 'flex', alignItems: 'center' }}
-                        color="inherit"
-                        href="/"
-                    >
-                        Home
-                    </Link>
-                    </Typography>
-                </Breadcrumbs>
             <AddModal open={open} onClose={handleCloseModal} onSave={addFolder}/>
             <div style={styles.list}>
                 {

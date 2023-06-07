@@ -24,6 +24,9 @@ const theme = createTheme({
     },
     neutral:{
       main:colors.grey
+    },
+    error:{
+      main:colors.red
     }
   },
 });
