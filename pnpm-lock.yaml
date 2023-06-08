@@ -16,9 +16,6 @@ dependencies:
   '@mui/material':
     specifier: ^5.12.2
     version: 5.12.3(@emotion/react@11.11.0)(@emotion/styled@11.11.0)(react-dom@18.2.0)(react@18.2.0)
-  '@next/font':
-    specifier: 13.3.2
-    version: 13.3.2
   next:
     specifier: 13.3.2
     version: 13.3.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
@@ -1565,10 +1562,6 @@ packages:
 
   /@next/env@13.3.2:
     resolution: {integrity: sha512-W+RJPtDj8PhOmZFi0MMhFoyWCz4tJeDEm7WtTTKflD+fgvmxpuOwxfQ2RWMz2gwnz6gL6hCuXtCtPpBBHDB7rg==}
-    dev: false
-
-  /@next/font@13.3.2:
-    resolution: {integrity: sha512-gQICS3IZIbITqxqBVD0K8ng9ib0bxsOxVhTLeQyBlL773sNQoWIhJOyUHhYw1kSaOWP5BiFEmTvjNQNKwYuVKQ==}
     dev: false
 
   /@next/swc-darwin-arm64@13.3.2:
