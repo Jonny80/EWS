@@ -22,13 +22,16 @@ export default function Files({name}){
     return(
         <div>
             <Header withSettings={false}/>
-                <SubHeader path={[
+                <SubHeader
+                list={listview}
+                    path={[
                     {
-                        label:name,
+                        label:router.query.name || 'folder',
                         icon:<FolderIcon fontSize={'small'}/>,
                         href:'/files'
                     },
-                ]} onChange={changeView}/>
+                ]}
+                onChange={changeView}/>
             <Grid container spacing={2} style={styles.container}>
                 {fileData.map((item,index) => (
                     <Grid item sm={listview ? 12:3} style={listview ? styles.childStyleList:styles.childStyle} key={index}>

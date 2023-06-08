@@ -62,7 +62,7 @@ export default function File({file,name,subHeader,size,synced,listView=false,ser
                 </div>
                 <div style={styles.listInfo}>
                     <div style={styles.subHeader}>{subHeader}</div>
-                    <div style={styles.subHeader}>{size}</div>
+                    <div style={styles.subHeader}>{'Size: ' + size}</div>
                     <div style={styles.syncedHeader}>
                         <div style={styles.subHeader}>{synced}</div>
                         <TaskAltIcon color={'success'} style={{marginLeft:'.5vw'}} sx={{height:'1vw'}}/>

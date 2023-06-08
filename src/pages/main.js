@@ -18,8 +18,11 @@ export default function main(){
     const [open,setOpen] = useState(false);
     const handleCloseModal = () => setOpen(false);
     const handleOpenModal = () => setOpen(true);
-    const handleCLick = () =>{
-        router.push('/files')
+    const handleCLick = (name) =>{
+        router.push({
+            pathname:'/files',
+            query:{name:name}
+        })
     }
 
     const addFolder = (name,icon) =>{
@@ -38,7 +41,7 @@ export default function main(){
             <div style={styles.list}>
                 {
                     folder.map((folder,index)=>
-                        <Folder key={index} header={folder.name} subHeader={'synchronized: 15:32 '} icon={folder.icon} onClick={handleCLick}/>)
+                        <Folder key={index} header={folder.name} subHeader={'synchronized: 15:32 '} icon={folder.icon} onClick={()=>handleCLick(folder.name)}/>)
                 }
             </div>
             <Fab color="primary" aria-label="add" style={styles.Fab} onClick={handleOpenModal}>
