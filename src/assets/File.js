@@ -3,12 +3,11 @@ import FileIcon from '@/assets/svgs/File.svg'
 import {colors} from "@/config/colors";
 import Image from "next/image";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
-import {Box, Divider, ListItemIcon, ListItemText, Menu, MenuItem} from "@mui/material";
+import {Menu, MenuItem} from "@mui/material";
 import {useState} from "react";
-import {ContentCut} from "@mui/icons-material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
+import DownloadIcon from '@mui/icons-material/Download';
 export default function File({file,name,subHeader,size,synced,listView=false,service=null}){
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -41,18 +40,18 @@ export default function File({file,name,subHeader,size,synced,listView=false,ser
                         vertical: 'center',
                         horizontal: 'center',
                     }}
-                    transformOrigin={{
-                        vertical: 'center',
-                        horizontal: 'center',
-                    }}
                 >
                     <MenuItem onClick={handleClose}>
                         <EditIcon />
-                        Edit
+                        Rename
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
                         <DeleteIcon color={'error'}/>
                         Delete
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                        <DownloadIcon />
+                        Download
                     </MenuItem>
                 </Menu>
                 <div style={styles.listIcon}>
@@ -96,6 +95,10 @@ export default function File({file,name,subHeader,size,synced,listView=false,ser
                 <MenuItem onClick={handleClose}>
                     <DeleteIcon color={'error'}/>
                     Delete
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <DownloadIcon />
+                    Download
                 </MenuItem>
             </Menu>
             <Image src={getIcon()} alt={'icon'} style={styles.icon}/>

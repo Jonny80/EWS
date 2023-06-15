@@ -23,14 +23,17 @@ export default function Folder({icon,header,subHeader,onClick}){
     }
     return(
         <div style={styles.container} onClick={onClick} className={folderStyles.container}>
-            <div style={styles.iconContainer}>
-                <Image src={getIcon()} alt={'Image'} style={styles.icon}/>
-            </div>
+
             <div style={styles.description}>
-                <div style={styles.header}>{header}</div>
+                <div style={styles.iconContainer}>
+                    <div style={styles.header}>{header}</div>
+
+                </div>
                 <div style={styles.subHeaderContainer}>
+                    <Image src={getIcon()} alt={'Image'} style={styles.icon}/>
                     <div style={styles.subHeader}>{subHeader}</div>
                     <TaskAltIcon color={'success'} style={{marginLeft:'.5vw'}} fontSize={'small'}/>
+
                 </div>
             </div>
             <Button variant={'contained'} style={styles.button} onClick={()=> {}}>Delete</Button>
@@ -48,24 +51,27 @@ const styles = {
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'flex-start',
-        height:'15vh',
+        height:'8vw',
         borderRadius:'15px',
         border:'2px solid transparent',
         boxShadow:colors.shadow,
         paddingLeft:'2%'
     },
     iconContainer:{
-        height:'60%',
-        minWidth:'8%'
+        justifyContent: 'space-between',
+        alignItems:'center',
+        display:'flex',
+        flexDirection:'row',
     },
     icon:{
-        width: '100%',
-        height:'100%'
+        width: '7%',
+        height:'7%',
+        marginRight: '5%'
     },
     description:{
         display:'flex',
         flexDirection: 'column',
-        marginLeft:'5%',
+        marginLeft:'2%',
         alignItems: 'space-between'
     },
     header:{
@@ -80,6 +86,7 @@ const styles = {
     subHeaderContainer:{
         display:'flex',
         flexDirection:'row',
+        alignItems:'center'
     },
     button:{
         borderRadius:'0.3rem',

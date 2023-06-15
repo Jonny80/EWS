@@ -28,7 +28,7 @@ export default function Files({name}){
                     {
                         label:router.query.name || 'folder',
                         icon:<FolderIcon fontSize={'small'}/>,
-                        href:'/files'
+                        href:null
                     },
                 ]}
                 onChange={changeView}/>

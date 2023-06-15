@@ -1,9 +1,12 @@
 import '@/styles/globals.css'
-import {createTheme, ThemeProvider} from "@mui/material";
+import {createTheme, responsiveFontSizes, ThemeProvider} from "@mui/material";
 import Head from 'next/head'
 import {colors} from "@/config/colors";
 
-const theme = createTheme({
+let theme = createTheme({
+  root:{
+
+  },
   palette: {
     typography: {
       fontFamily: [
@@ -30,6 +33,7 @@ const theme = createTheme({
     }
   },
 });
+
 
 export default function App({ Component, pageProps }) {
   return (
