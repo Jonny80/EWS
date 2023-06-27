@@ -6,7 +6,7 @@ import {
     InputLabel,
     MenuItem,
     Modal,
-    Select,
+    Select, Switch,
 } from "@mui/material";
 import {colors} from "@/config/colors";
 import {useState} from "react";
@@ -39,12 +39,12 @@ export default function AddModal({open,onClose,onSave}){
     return(
         <Modal open={open} onClose={onClose} style={styles.modal}>
             <div style={styles.container}>
-                <div style={styles.mainHeader}> Service Settings</div>
+                <div style={styles.mainHeader}>Adding new Files</div>
                 <div>
-                    <div style={styles.header}>Add Service</div>
+                    <div style={styles.header}>Select Service</div>
                     <div>
                         <Box sx={{ minWidth: 120 }} style={{marginTop:'2vw'}}>
-                            <FormControl fullWidth>
+                            <FormControl fullWidth style={{width:"30vw"}}>
                                 <InputLabel id="demo-simple-select-label">Service</InputLabel>
                                 <Select
                                     labelId="demo"
@@ -65,7 +65,7 @@ export default function AddModal({open,onClose,onSave}){
                     <div style={styles.header}>Add Folder</div>
                     <div>
                         <Box sx={{ minWidth: 120 }} style={{marginTop:'2vw'}}>
-                            <FormControl fullWidth>
+                            <FormControl fullWidth style={{width:"30vw"}}>
                                 <InputLabel id="demo-simple-select-label">Service</InputLabel>
                                 <Select
                                     labelId="demo"
@@ -82,13 +82,9 @@ export default function AddModal({open,onClose,onSave}){
                         </Box>
                     </div>
                 </div>
-                <div>
-                    <FormControlLabel
-                        value="Subfolder"
-                        control={<Checkbox checked={checked} onChange={handleChangeCheckbox}/>}
-                        label="Subfolder"
-                        labelPlacement="start"
-                    />
+                <div style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",width:"30vw"}}>
+                   <div>Subfolder</div>
+                    <Switch />
                 </div>
                 <div style={styles.buttonContainer}>
                     <Button variant={'contained'} style={styles.button} onClick={onClose}>Back</Button>

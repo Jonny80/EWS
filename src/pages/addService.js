@@ -39,10 +39,10 @@ export default function addService() {
                     icon: <AddIcon fontSize={'small'} />
                 }]} />
             <div style={styles.container}>
-                <div>
-                    <div style={styles.header}>Add Service</div>
+                    <h2 style={styles.header}>Add Service</h2>
                         <Box sx={{ minWidth: 120 }} style={{marginTop:'2vw'}}>
-                            <FormControl fullWidth>
+                            <div style={{marginBottom:"1vw",fontWeight:'bold',textAlign:"center"}}>Select service</div>
+                            <FormControl fullWidth style={{width:"30vw"}}>
                                 <InputLabel id="demo-simple-select-label">Service</InputLabel>
                                 <Select
                                     labelId="demo"
@@ -57,14 +57,13 @@ export default function addService() {
                                 </Select>
                             </FormControl>
                         </Box>
-                    </div>
                 <div>
                     <div style={styles.header}>Username</div>
-                    <TextField id="standard-basic" label="" variant="standard" value={username} onChange={handleChangeUsername}/>
+                    <TextField id="standard-basic" label="" variant="standard" value={username} onChange={handleChangeUsername} style={{width:"30vw"}}/>
                 </div>
                 <div>
                     <div style={styles.header}>Password</div>
-                    <TextField id="standard-basic" label="" type="password" variant="standard" />
+                    <TextField id="standard-basic" label="" type="password" variant="standard" style={{width:"30vw"}}/>
                 </div>
                 <Button variant={'contained'} style={styles.addButton} onClick={handleSave}>Add Account</Button>
             </div>
@@ -94,8 +93,13 @@ const styles = {
     header:{
         fontWeight:'bold',
         fontFamily:'Lato',
-        fontSize:'1.5rem',
         textAlign:'center'
+
+    },
+    header2:{
+        fontFamily:'Lato',
+        textAlign:'center'
+
 
     },
     buttonContainer:{
