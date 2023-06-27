@@ -3,10 +3,11 @@ import Image from "next/image";
 import folderStyles from '@/styles/Folder.module.css'
 import OneDrive from "@/assets/svgs/Cloud.svg";
 import Apple from "@/assets/svgs/Apple.svg";
+import FolderImage from "@/assets/svgs/Folder.svg"
 import Drive from "@/assets/svgs/GoogleDrive.svg";
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
-import {Button} from "@mui/material";
-export default function Folder({icon,header,subHeader,onClick}){
+import {Button, Icon} from "@mui/material";
+export default function Folder({icon,header,subHeader,onClick,onDelete,index}){
 
 
     function getIcon(){
@@ -22,22 +23,37 @@ export default function Folder({icon,header,subHeader,onClick}){
         }
     }
     return(
-        <div style={styles.container} onClick={onClick} className={folderStyles.container}>
-
-            <div style={styles.description}>
+        <div style={styles.container}   className={folderStyles.container}>
+            <div onClick={onClick}  style={{
+                justifyContent:'flex-start',
+                display:"flex",
+                flexDirection:'row',
+                width:"80%",
+                height:"100%",
+                alignItems:'center',
+            }}>
+                <Image src={FolderImage} style={{
+                    width:"6%",
+                    height:"40%"
+                }} />
+                <div style={styles.description} >
                 <div style={styles.iconContainer}>
                     <div style={styles.header}>{header}</div>
-
                 </div>
                 <div style={styles.subHeaderContainer}>
                     <Image src={getIcon()} alt={'Image'} style={styles.icon}/>
                     <div style={styles.subHeader}>{subHeader}</div>
                     <TaskAltIcon color={'success'} style={{marginLeft:'.5vw'}} fontSize={'small'}/>
-
                 </div>
             </div>
-            <Button variant={'contained'} style={styles.button} onClick={()=> {}}>Delete</Button>
-
+            </div>
+            <div style={{
+                display:"flex",
+                height:"100%",
+                alignItems:"center"
+            }}>
+            <Button variant={'contained'} style={styles.button} onClick={()=>onDelete(index)}>Delete</Button>
+            </div>
         </div>
 
     )
@@ -50,7 +66,6 @@ const styles = {
         display:'flex',
         flexDirection:'row',
         alignItems:'center',
-        justifyContent:'flex-start',
         height:'8vw',
         borderRadius:'15px',
         border:'2px solid transparent',
@@ -71,8 +86,8 @@ const styles = {
     description:{
         display:'flex',
         flexDirection: 'column',
-        marginLeft:'2%',
-        alignItems: 'space-between'
+        marginLeft:'5%',
+        alignItems: 'space-between',
     },
     header:{
         color:colors.main,

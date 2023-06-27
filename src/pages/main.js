@@ -34,6 +34,12 @@ export default function main(){
         })
     }
 
+    function getData(index) {
+        let buffer = [...folder];
+        buffer.splice(index,1);
+        return buffer
+    }
+
     return(
         <div style={styles.container}>
             <Header withSettings={true}/>
@@ -41,7 +47,7 @@ export default function main(){
             <div style={styles.list}>
                 {
                     folder.map((folder,index)=>
-                        <Folder key={index} header={folder.name} subHeader={'synchronized: 15:32 '} icon={folder.icon} onClick={()=>handleCLick(folder.name)}/>)
+                        <Folder key={index} index={index} onDelete={()=>setFolder(getData(index))} header={folder.name} subHeader={'synchronized: 15:32 '} icon={folder.icon} onClick={()=>handleCLick(folder.name)}/>)
                 }
             </div>
             <Fab color="primary" aria-label="add" style={styles.Fab} onClick={handleOpenModal}>
