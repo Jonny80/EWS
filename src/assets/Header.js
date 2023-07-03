@@ -21,7 +21,7 @@ export default function Header({withSettings}){
                             style={styles.settingButton}
                             onClick={()=>router.push('/services')}
                 >
-                    <SettingsIcon style={styles.icon}/>
+                    <SettingsIcon style={styles.settingsIcon}/>
                 </IconButton>
             }
 
@@ -34,7 +34,7 @@ const styles = {
     container:{
         boxShadow:colors.shadow,
         backgroundColor:colors.main,
-        height:'6vw',
+        height:'4vw',
         width:'100%',
         display:'flex',
         flexDirection:'row',
@@ -51,10 +51,14 @@ const styles = {
         height:'100%'
     },
     settingButton:{
-        padding: 0,
+        display:'flex',
+        alignItems: 'flex-end',
         width:'5vw',
+        height:'100%',
+    },
+    settingsIcon:{
+        color:colors.white,
+        width:'100%',
         height:'100%'
     }
-
-
 }

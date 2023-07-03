@@ -6,7 +6,7 @@ import SubHeader from "@/assets/SubHeader";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AddIcon from '@mui/icons-material/Add';
 import {useRouter} from "next/router";
-export default function addService() {
+export default function AddService({onClose,addService}) {
     const [service, setService] = useState('');
     const [username,setUsername] = useState('')
 
@@ -22,7 +22,7 @@ export default function addService() {
         if (username.length > 0 && service.length > 0){
             addService(username,service);
         }
-        router.push('/services')
+        onClose();
     }
 
     return (

@@ -9,6 +9,7 @@ import {colors} from "@/config/colors";
 import {serviceData} from "@/config/dummyData";
 import SettingsIcon from '@mui/icons-material/Settings';
 import SubHeader from "@/assets/SubHeader";
+import AddService from "@/assets/addService";
 
 const path = [{
     href:null,
@@ -52,12 +53,15 @@ export default function services(){
         return buffer
     }
 
+    if (open){
+        return <AddService onClose={handleCloseModal} addService={addService} />
+    }
+
 
     return (
         <div style={styles.container}>
             <Header withSettings={false}/>
             <SubHeader path={path}/>
-            <SettingModal open={open} onClose={handleCloseModal} addService={addService}/>
             <div style={styles.list}>
                 {
                     data.map((s,index)=>{
